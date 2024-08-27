@@ -1,0 +1,6 @@
+﻿@page "/test"
+@using eCommerceBlazorFrontEnd.Services
+@inject IMyService MyService
+
+<h3>Test</h3>
+<h3>@MyService.GetMyData()</h3>
