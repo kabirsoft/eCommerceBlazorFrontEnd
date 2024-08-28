@@ -1,7 +1,8 @@
 ﻿using eCommerceBlazorFrontEnd.Models;
+using eCommerceWebApiBackEnd.Shared;
 using Microsoft.AspNetCore.Components;
 
-namespace eCommerceBlazorFrontEnd.Components.Shared
+namespace eCommerceBlazorFrontEnd.Components.SharedPages
 {
     public partial class ProductList
     {
@@ -13,10 +14,10 @@ namespace eCommerceBlazorFrontEnd.Components.Shared
         {
             //Console.WriteLine($"[INFO] Base address:{Http.BaseAddress}");
 
-            var result = await Http.GetFromJsonAsync<List<Product>>("api/product");
-            if(result != null)
+            var result = await Http.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/product");
+            if(result != null && result.Data != null)
             {
-                products = result;
+                products = result.Data;
             }
         }
     }
