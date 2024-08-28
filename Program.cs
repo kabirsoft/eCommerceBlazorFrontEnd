@@ -1,5 +1,6 @@
 using eCommerceBlazorFrontEnd.Components;
 using eCommerceBlazorFrontEnd.Services;
+using eCommerceBlazorFrontEnd.Services.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiBaseAddress"]) });
-builder.Services.AddScoped<IMyService, MyService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
