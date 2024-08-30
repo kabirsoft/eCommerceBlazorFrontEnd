@@ -1,4 +1,7 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using eCommerceBlazorFrontEnd.Services.CategoryService
+@inject ICategoryService CategoryService
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">eCommerceBlazorFrontEnd</a>
     </div>
@@ -10,21 +13,23 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                Home
             </NavLink>
         </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
+        @foreach (var category in CategoryService.Categories)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="@category.Url">
+                    @category.Name
+                </NavLink>
+            </div>
+        }
     </nav>
 </div>
 
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await CategoryService.GetAllCategories();
+    }
+}
