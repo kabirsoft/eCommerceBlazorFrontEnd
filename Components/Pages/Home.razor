@@ -1,5 +1,4 @@
 ﻿@page "/"
-@page "/{CategoryUrl}"
 @using eCommerceBlazorFrontEnd.Components.SharedPages
 @using eCommerceBlazorFrontEnd.Services.ProductService
 @inject IProductService ProductService
@@ -9,11 +8,8 @@
 <ProductList />
 
 @code {
-    [Parameter] 
-    public string? CategoryUrl { get; set; } = null;
-
-    protected override async Task OnParametersSetAsync()
+    protected override async Task OnInitializedAsync()
     {
-        await ProductService.GetAllProducts(CategoryUrl);
+        await ProductService.GetAllProducts(); // Load all products for the home page
     }
 }

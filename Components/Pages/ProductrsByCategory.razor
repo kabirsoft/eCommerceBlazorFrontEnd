@@ -1,0 +1,19 @@
+﻿@page "/product/category/{CategoryUrl}"
+
+@using eCommerceBlazorFrontEnd.Components.SharedPages
+@using eCommerceBlazorFrontEnd.Services.ProductService
+@inject IProductService ProductService
+
+<PageTitle>@CategoryUrl Products</PageTitle>
+
+<ProductList />
+
+@code {
+    [Parameter] 
+    public string? CategoryUrl { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await ProductService.GetProductsByCategory(CategoryUrl);
+    }
+}

@@ -1,5 +1,8 @@
 ﻿using eCommerceBlazorFrontEnd.Models;
 using eCommerceWebApiBackEnd.Shared;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace eCommerceBlazorFrontEnd.Services.ProductService
 {
@@ -7,7 +10,8 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
     {
         event Action ProductsChanged;
         List<Product> Products { get; set; }
-        Task GetAllProducts(string? categoryUrl = null);
+        Task GetAllProducts();
         Task<ServiceResponse<Product>> GetProductByIdAsync(int productId);
+        Task GetProductsByCategory(string categoryUrl);
     }
 }

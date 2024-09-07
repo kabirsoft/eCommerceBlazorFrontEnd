@@ -19,7 +19,7 @@
         @foreach (var category in CategoryService.Categories)
         {
             <div class="nav-item px-3">
-                <NavLink class="nav-link" href="@category.Url">
+                <NavLink class="nav-link" href="@GetCategoryUrl(category.Url)">
                     @category.Name
                 </NavLink>
             </div>
@@ -28,6 +28,11 @@
 </div>
 
 @code {
+    // Helper method to construct the URL
+    private string GetCategoryUrl(string categoryUrl)
+    {
+        return $"/product/category/{categoryUrl}"; // Construct the full URL here
+    }
     protected override async Task OnInitializedAsync()
     {
         await CategoryService.GetAllCategories();
