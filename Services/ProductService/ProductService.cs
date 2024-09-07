@@ -1,10 +1,6 @@
 ﻿using eCommerceBlazorFrontEnd.Models;
 using eCommerceWebApiBackEnd.Shared;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
+
 
 namespace eCommerceBlazorFrontEnd.Services.ProductService
 {
@@ -43,12 +39,10 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
             ProductsChanged?.Invoke();
         }
 
-
         public async Task<ServiceResponse<Product>> GetProductByIdAsync(int productId)
         {
             var reslult = await _http.GetFromJsonAsync<ServiceResponse<Product>>($"api/product/{productId}");
             return reslult;
         }
-
     }
 }
