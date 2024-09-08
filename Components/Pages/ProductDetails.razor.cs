@@ -8,6 +8,8 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
     {
         private Product? product = null;
         private string message = string.Empty;
+        private int CurrentTypeId = 1;
+
         [Parameter]
         public int Id { get; set; }
 
@@ -24,8 +26,18 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
             }
             else
             {
-                product = result.Data;                
+                product = result.Data;
+                if(product.ProductVariant.Count > 0)
+                {
+                    CurrentTypeId = product.ProductVariant[0].ProductTypeId;
+                }
             }
+        }
+
+        private ProductVariant GetSelectedVariant()
+        {
+            var variant = product?.ProductVariant.FirstOrDefault(v => v.ProductTypeId == CurrentTypeId);
+            return variant;
         }
     }
 }
