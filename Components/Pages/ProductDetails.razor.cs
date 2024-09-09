@@ -27,16 +27,16 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
             else
             {
                 product = result.Data;
-                if(product.ProductVariant.Count > 0)
+                if(product.ProductPriceVariant.Count > 0)
                 {
-                    CurrentTypeId = product.ProductVariant[0].ProductTypeId;
+                    CurrentTypeId = product.ProductPriceVariant[0].ProductTypeId;
                 }
             }
         }
 
-        private ProductVariant GetSelectedVariant()
+        private ProductPriceVariant GetSelectedVariant()
         {
-            var variant = product?.ProductVariant.FirstOrDefault(v => v.ProductTypeId == CurrentTypeId);
+            var variant = product?.ProductPriceVariant.FirstOrDefault(v => v.ProductTypeId == CurrentTypeId);
             return variant;
         }
     }

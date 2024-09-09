@@ -20,7 +20,7 @@ namespace eCommerceBlazorFrontEnd.Components.SharedPages
 
         private string GetProductPrice(Product product)
         {
-            var variants = product.ProductVariant;
+            var variants = product.ProductPriceVariant;
             if (variants.Count == 0)
             {
                 return string.Empty;

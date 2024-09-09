@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
+﻿
 namespace eCommerceBlazorFrontEnd.Models
 {
     public class Product
@@ -10,6 +9,6 @@ namespace eCommerceBlazorFrontEnd.Models
         public string ImageUrl { get; set; } = string.Empty;
         public Category? Category { get; set; }
         public int CategoryId { get; set; }
-        public List<ProductVariant> ProductVariant { get; set; } = new List<ProductVariant>();
+        public List<ProductPriceVariant> ProductPriceVariant { get; set; } = new List<ProductPriceVariant>();
     }
 }
