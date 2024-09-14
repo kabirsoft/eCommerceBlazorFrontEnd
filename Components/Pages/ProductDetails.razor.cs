@@ -8,7 +8,7 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
     {
         private Product? product = null;
         private string message = string.Empty;
-        private int CurrentTypeId = 1;
+        private int CurrentTypeId = 1;        
 
         [Parameter]
         public int Id { get; set; }
@@ -33,11 +33,10 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
                 }
             }
         }
-
         private ProductPriceVariant GetSelectedVariant()
         {
             var variant = product?.ProductPriceVariant.FirstOrDefault(v => v.ProductTypeId == CurrentTypeId);
             return variant;
-        }
+        }     
     }
 }
