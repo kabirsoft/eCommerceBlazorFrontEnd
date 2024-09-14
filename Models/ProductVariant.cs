@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace eCommerceBlazorFrontEnd.Models
 {
-    public class ProductPriceVariant
+    public class ProductVariant
     {
         public Product? Product { get; set; }
         public int ProductId { get; set; }

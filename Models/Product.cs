@@ -9,6 +9,6 @@ namespace eCommerceBlazorFrontEnd.Models
         public string ImageUrl { get; set; } = string.Empty;
         public Category? Category { get; set; }
         public int CategoryId { get; set; }
-        public List<ProductPriceVariant> ProductPriceVariant { get; set; } = new List<ProductPriceVariant>();
+        public List<ProductVariant> ProductVariant { get; set; } = new List<ProductVariant>();
     }
 }
