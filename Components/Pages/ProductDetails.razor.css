@@ -1,15 +1,17 @@
-﻿.media-img{
+﻿.media-img {
     max-height: 500px;
     max-width: 500px;
     border-radius: 6px;
     margin: 0 10px 10px 10px;
 }
-.media-img-wrapper{
+
+.media-img-wrapper {
     max-width: 500px;
     max-height: 500px;
     text-align: center;
 }
-.original-price{
+
+.original-price {
     text-decoration: line-through;
 }
 
@@ -17,10 +19,12 @@
     .media {
         flex-direction: column;
     }
-    .media-img{        
+
+    .media-img {
         max-width: 300px;
     }
-    .media-img-wrapper{
+
+    .media-img-wrapper {
         width: 100%;
         height: auto;
     }

@@ -13,5 +13,8 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
         Task GetAllProducts();
         Task<ServiceResponse<Product>> GetProductByIdAsync(int productId);
         Task GetProductsByCategory(string categoryUrl);
+        string Message { get; set; }
+        Task SearchProducts(string searchText);
+        Task<List<string>> SearchProductsSuggestions(string searchText);
     }
 }

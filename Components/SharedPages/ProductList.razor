@@ -3,9 +3,9 @@
 
 <h3>ProductList</h3>
 
-@if (ProductService.Products ==null || ProductService.Products.Count == 0)
+@if (ProductService.Products == null || ProductService.Products.Count == 0)
 {
-    <span> Loading Products... </span>
+    <span> @ProductService.Message </span>
 }
 else
 {
