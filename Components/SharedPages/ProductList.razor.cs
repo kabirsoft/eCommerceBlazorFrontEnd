@@ -7,7 +7,7 @@ namespace eCommerceBlazorFrontEnd.Components.SharedPages
     public partial class ProductList : IDisposable
     {        
         [Inject]
-        IProductService ProductService { get; set; }
+        public IProductService ProductService { get; set; }
         protected override async Task OnInitializedAsync()
         {
             ProductService.ProductsChanged += StateHasChanged;            
