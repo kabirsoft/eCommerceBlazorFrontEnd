@@ -6,21 +6,19 @@
     color: white;
     position: absolute;
     top: 4rem;
-    left: 0.5rem;
-    /*right: 1rem;*/  
+    right: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") no-repeat center/1.75rem rgba(255, 255, 255, 0.1);
 }
 
-.navbar-toggler:checked {
-    background-color: rgba(255, 255, 255, 0.5);
-    display: block;
-}
+    .navbar-toggler:checked {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
 
-.top-row {
+/*.top-row {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
-}
+    background-color: rgba(0,0,0,0.4);   
+}*/
 
 .navbar-brand {
     font-size: 1.1rem;
@@ -51,8 +49,8 @@
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
-    padding-top: 0.5rem;   
-}   
+    padding-top: 0.5rem;
+}
 
     .nav-item ::deep .nav-link {
         color: #d7d7d7;
@@ -66,33 +64,30 @@
         width: 100%;
     }
 
-.nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.37);
-    color: white;
-}
+    .nav-item ::deep a.active {
+        background-color: rgba(255,255,255,0.37);
+        color: white;
+    }
 
-.nav-item ::deep .nav-link:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
+    .nav-item ::deep .nav-link:hover {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+    }
 
 .nav-scrollable {
     display: none;
-    background-color: rgba(0, 0, 0, 0.8); /* Visible background */
-    position: absolute; /* Position it on top of other content */
-   /* top: 3.5rem;*/
+    position: absolute;
     left: 0;
     width: 100%;
-    z-index: 1000; /* High z-index to make it clickable */    
-    height: calc(100vh - 3.5rem);
-    overflow-y: auto;
+    padding-left: 0.5rem;
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
-.navbar-toggler:checked + .nav-scrollable {
+.navbar-toggler:checked ~ .nav-scrollable {
     display: block;
 }
 
-.flex-nav{
+.flex-nav {
     flex-direction: column;
 }
 
@@ -100,23 +95,14 @@
     .navbar-toggler, .navbar-toggler-wrapper {
         display: none;
     }
+
     .flex-nav {
         flex-direction: row;
         display: flex;
     }
-    .nav-scrollable {
-        display: flex;
-        background-color: transparent; /* Remove the dark background */
-        position: static; /* Remove absolute positioning */
-        height: auto; /* Allow it to fit content */
-        z-index: auto; /* Reset the z-index */
-    }
-   /* .nav-scrollable {
-        
-        display: block;
 
-      
-        height: calc(100vh - 3.5rem);
+    .nav-scrollable {
+        display: block;
         overflow-y: auto;
-    }*/
+    }
 }
