@@ -67,5 +67,16 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
                  await _http.GetFromJsonAsync<ServiceResponse<List<string>>>($"api/product/suggestions/{searchText}");
             return result.Data;
         }
+
+        public async Task GetFeaturedProducts()
+        {
+            var result = await _http.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/product/featured");
+
+            if (result != null && result.Data != null)
+            {
+                Products = result.Data;
+            }
+            ProductsChanged?.Invoke();
+        }
     }
 }

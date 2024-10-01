@@ -16,5 +16,6 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
         string Message { get; set; }
         Task SearchProducts(string searchText);
         Task<List<string>> SearchProductsSuggestions(string searchText);
+        Task GetFeaturedProducts();
     }
 }

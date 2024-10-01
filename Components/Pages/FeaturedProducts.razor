@@ -1,0 +1,16 @@
+﻿@page "/featured-products"
+@using eCommerceBlazorFrontEnd.Components.SharedPages
+@using eCommerceBlazorFrontEnd.Services.ProductService
+@inject IProductService ProductService
+
+@* <h3>FeaturedProducts</h3> *@
+
+<ProductList />
+
+@code {
+     
+     protected override async Task OnInitializedAsync()
+    {        
+        await ProductService.GetFeaturedProducts();
+    }
+}
