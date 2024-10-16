@@ -37,7 +37,7 @@ namespace eCommerceBlazorFrontEnd.Components.SharedPages
         }
         public async Task HandleSearch(KeyboardEventArgs e)
         {
-            Console.WriteLine($"Key pressed: {e.Key}");
+            //Console.WriteLine($"Key pressed: {e.Key}");
             if (e.Key == null || e.Key.Equals("Enter"))
             {
                 await SearchProductsWithPagination();
