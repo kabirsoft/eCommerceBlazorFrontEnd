@@ -1,4 +1,5 @@
-﻿using eCommerceBlazorFrontEnd.Models;
+﻿using eCommerceBlazorFrontEnd.Dto;
+using eCommerceBlazorFrontEnd.Models;
 using eCommerceWebApiBackEnd.Shared;
 
 
@@ -14,6 +15,9 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
         }
         public List<Product> Products { get; set; } = new List<Product>();
         public string Message { get; set; } = "Loading products...";
+        public int CurrentPage { get; set; } = 1;
+        public int TotalPages { get; set; } = 0;
+        public string LastSearchText { get; set; } = string.Empty;
 
         public event Action ProductsChanged;
 
@@ -25,6 +29,13 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
             {
                 Products = result.Data;
             }
+            CurrentPage = 1;
+            TotalPages =  0;
+            if (Products.Count == 0)
+            {
+                Message = "No products found";
+            }
+
             ProductsChanged?.Invoke();
         }
 
@@ -36,6 +47,12 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
             if (result != null && result.Data != null)
             {
                 Products = result.Data;
+            }
+            CurrentPage = 1;
+            TotalPages = 0;
+            if (Products.Count == 0)
+            {
+                Message = "No products found";
             }
             ProductsChanged?.Invoke();
         }
@@ -53,6 +70,23 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
             if (result != null && result.Data != null)
             {
                 Products = result.Data;
+            }
+            if (Products.Count == 0)
+            {
+                Message = $"No products found: {searchText}";
+            }
+            ProductsChanged?.Invoke();
+        }
+        public async Task SearchProductsWithPagination(string searchText, int page)
+        {
+            LastSearchText = searchText;
+            var result =
+                 await _http.GetFromJsonAsync<ServiceResponse<ProductPaginationDto>>($"api/product/search/{searchText}/{page}");
+            if (result != null && result.Data != null)
+            {
+                Products = result.Data.Products;
+                CurrentPage = result.Data.CurrentPage;
+                TotalPages = result.Data.TotalPages;
             }
             if (Products.Count == 0)
             {
@@ -78,5 +112,7 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
             }
             ProductsChanged?.Invoke();
         }
+
+       
     }
 }

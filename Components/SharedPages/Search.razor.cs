@@ -11,6 +11,7 @@ namespace eCommerceBlazorFrontEnd.Components.SharedPages
         [Inject]
         public IProductService ProductService { get; set; }
         private string searchText = string.Empty;
+        private string page = "1";
         private List<string> suggestions = new List<string>();
         protected ElementReference searchInput;
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -27,12 +28,19 @@ namespace eCommerceBlazorFrontEnd.Components.SharedPages
                 NavigationManager.NavigateTo($"/product/search/{searchText}");
             }
         }
+        public async Task SearchProductsWithPagination()
+        {
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                NavigationManager.NavigateTo($"/product/search/{searchText}/{page}");
+            }
+        }
         public async Task HandleSearch(KeyboardEventArgs e)
         {
             Console.WriteLine($"Key pressed: {e.Key}");
             if (e.Key == null || e.Key.Equals("Enter"))
             {
-                await SearchProducts();
+                await SearchProductsWithPagination();
             }
             else if (searchText.Length > 1)
             {

@@ -1,0 +1,23 @@
+﻿@page "/product/search/{searchText}/{page:int}"
+
+@using eCommerceBlazorFrontEnd.Components.SharedPages
+@using eCommerceBlazorFrontEnd.Services.ProductService
+@inject IProductService ProductService
+
+<PageTitle>SearchProductsPage</PageTitle>
+<h3>Search text: @SearchText</h3>
+
+<ProductList />
+
+@code {
+    [Parameter]
+    public string? SearchText { get; set; }
+
+    [Parameter]
+    public int Page { get; set; } = 1;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await ProductService.SearchProductsWithPagination(SearchText, Page);
+    }
+}
