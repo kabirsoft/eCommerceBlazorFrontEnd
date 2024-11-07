@@ -1,5 +1,4 @@
-﻿@page "/"
-
+﻿@page "/product/page/{page:int}"
 @using eCommerceBlazorFrontEnd.Components.SharedPages
 @using eCommerceBlazorFrontEnd.Services.ProductService
 @inject IProductService ProductService
@@ -16,12 +15,3 @@
         await ProductService.GetAllProductsWithPagination(Page); // Load all products for the home page
     }
 }
-
-@*
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        await ProductService.GetAllProducts(); // Load all products for the home page
-    }
-}
- *@

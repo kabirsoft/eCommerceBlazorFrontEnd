@@ -2,9 +2,9 @@
 using eCommerceBlazorFrontEnd.Services.ProductService;
 using Microsoft.AspNetCore.Components;
 
-namespace eCommerceBlazorFrontEnd.Components.SharedPages
+namespace eCommerceBlazorFrontEnd.Components.SharedPages.PtoductsBySearch
 {
-    public partial class ProductList : IDisposable
+    public partial class ProductsBySearch : IDisposable
     {
         [Inject]
         public IProductService ProductService { get; set; }

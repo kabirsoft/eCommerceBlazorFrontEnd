@@ -1,0 +1,23 @@
+﻿@page "/product/category/{CategoryUrl}/page/{page:int}"
+
+@using eCommerceBlazorFrontEnd.Components.SharedPages.PtoductsByCategory
+@using eCommerceBlazorFrontEnd.Services.ProductService
+@inject IProductService ProductService
+
+<PageTitle>Products: @CategoryUrl</PageTitle>
+<h3> Products: @CategoryUrl </h3>
+
+<ProductsByCategory />
+
+@code {
+    [Parameter]
+    public string? CategoryUrl { get; set; }
+
+    [Parameter]
+    public int Page { get; set; } = 1;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await ProductService.GetProductsByCategoryWithPagination(CategoryUrl, Page);
+    }
+}

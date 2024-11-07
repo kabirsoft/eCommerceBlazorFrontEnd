@@ -1,13 +1,13 @@
 ﻿@page "/product/search/{searchText}/{page:int}"
 
-@using eCommerceBlazorFrontEnd.Components.SharedPages
+@using eCommerceBlazorFrontEnd.Components.SharedPages.PtoductsBySearch
 @using eCommerceBlazorFrontEnd.Services.ProductService
 @inject IProductService ProductService
 
 <PageTitle>SearchProductsPage</PageTitle>
 <h3>Search text: @SearchText</h3>
 
-<ProductList />
+<ProductsBySearch />
 
 @code {
     [Parameter]

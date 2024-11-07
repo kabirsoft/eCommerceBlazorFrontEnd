@@ -29,10 +29,13 @@ else
         }
     </ul>
 
-    for (var i = 1; i <= ProductService.TotalPages; i++)
+    if (!string.IsNullOrEmpty(ProductService.CategoryUrl))
     {
-        <a class="btn @(i == ProductService.CurrentPage ? "btn-info": "btn-outline-info")
+        for (var i = 1; i <= ProductService.TotalPages; i++)
+        {
+            <a class="btn @(i == ProductService.CurrentPage ? "btn-info": "btn-outline-info")
                       page-selection"
-           href="/product/page/@i">@i</a>
+               href="/product/category/@ProductService.CategoryUrl/page/@i">@i</a>
+        }
     }
 }

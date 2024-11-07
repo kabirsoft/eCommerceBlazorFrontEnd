@@ -3,14 +3,14 @@
 
 
 <center><h2> Feature Products of Today </h2></center>
-@if(ProductService.Products == null || ProductService.Products.Count == 0)
+@if (ProductService.Products == null || ProductService.Products.Count == 0)
 {
     <span> @ProductService.Message </span>
 }
 else
 {
     <div class="container">
-        @foreach(var product in ProductService.Products)
+        @foreach (var product in ProductService.Products)
         {
             @if (product.Featured)
             {
@@ -21,7 +21,7 @@ else
                         </a>
                     </div>
                     <h4><a href="product/@product.Id"> @product.Title </a> </h4>
-                    @if(product.ProductVariant != null && product.ProductVariant.Count > 0)
+                    @if (product.ProductVariant != null && product.ProductVariant.Count > 0)
                     {
                         <h5 class="price">
                             $@product.ProductVariant[0].Price
@@ -31,13 +31,28 @@ else
             }
 
         }
-     </div>
+    </div>
 }
 
+@for (var i = 1; i <= ProductService.TotalPages; i++)
+{
+    <a class="btn @(i == ProductService.CurrentPage ? "btn-info": "btn-outline-info")
+                      page-selection"
+       href="/product/featured/page/@i">@i</a>
+}
 @code {
-
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        await ProductService.GetFeaturedProducts();
+        ProductService.ProductsChanged += OnProductsChanged;
+    }
+
+    private void OnProductsChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ProductService.ProductsChanged -= OnProductsChanged;
     }
 }

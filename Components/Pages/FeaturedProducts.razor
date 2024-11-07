@@ -1,8 +1,23 @@
-﻿@page "/featured-products"
-@using eCommerceBlazorFrontEnd.Components.SharedPages
+﻿@page "/product/featured/page/{page:int}"
+
+@using eCommerceBlazorFrontEnd.Components.SharedPages.FeaturedProducts
+@using eCommerceBlazorFrontEnd.Services.ProductService
+@inject IProductService ProductService
 
 <PageTitle> Featured products </PageTitle>
 
 <h3>Featured products</h3>
 
 <FeaturedProductsComponent />
+
+
+@code {
+
+    [Parameter]
+    public int Page { get; set; } = 1;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await ProductService.GetFeaturedProductsWithPagination(Page);
+    }
+}

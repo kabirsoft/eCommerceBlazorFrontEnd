@@ -14,12 +14,21 @@ namespace eCommerceBlazorFrontEnd.Services.ProductService
         int CurrentPage { get; set; }
         int TotalPages { get; set; }
         string LastSearchText { get; set; }
-        Task GetAllProducts();
+        string CategoryUrl { get; set; }
+
+        Task GetAllProductsWithPagination(int page);
         Task<ServiceResponse<Product>> GetProductByIdAsync(int productId);
-        Task GetProductsByCategory(string categoryUrl);        
-        Task SearchProducts(string searchText);
+        Task GetProductsByCategoryWithPagination(string categoryUrl, int page);
+        Task GetFeaturedProductsWithPagination(int page);
         Task SearchProductsWithPagination(string searchText, int page);
         Task<List<string>> SearchProductsSuggestions(string searchText);
+
+        // These are not used now, becoz pagination functonality is implemented
+        Task GetAllProducts();
+        Task GetProductsByCategory(string categoryUrl);
+        Task SearchProducts(string searchText);
         Task GetFeaturedProducts();
+        // End These are not used now, becoz pagination functonality is implemented
+
     }
 }

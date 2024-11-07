@@ -2,22 +2,21 @@
 using eCommerceBlazorFrontEnd.Services.ProductService;
 using Microsoft.AspNetCore.Components;
 
-namespace eCommerceBlazorFrontEnd.Components.SharedPages
+namespace eCommerceBlazorFrontEnd.Components.SharedPages.PtoductsByCategory
 {
-    public partial class ProductList : IDisposable
+    public partial class ProductsByCategory : IDisposable
     {
         [Inject]
         public IProductService ProductService { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             ProductService.ProductsChanged += StateHasChanged;
         }
-
         public void Dispose()
         {
             ProductService.ProductsChanged -= StateHasChanged;
         }
-
         private string GetProductPrice(Product product)
         {
             var variants = product.ProductVariant;
