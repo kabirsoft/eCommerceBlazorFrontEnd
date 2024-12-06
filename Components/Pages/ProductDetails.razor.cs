@@ -1,4 +1,6 @@
-﻿using eCommerceBlazorFrontEnd.Models;
+﻿using eCommerceBlazorFrontEnd.Components.SharedPages.Cart;
+using eCommerceBlazorFrontEnd.Models;
+using eCommerceBlazorFrontEnd.Services.CartService;
 using eCommerceBlazorFrontEnd.Services.ProductService;
 using Microsoft.AspNetCore.Components;
 
@@ -15,6 +17,8 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
 
         [Inject]
         public IProductService ProductService { get; set; }
+        [Inject]
+        public ICartService CartService { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
@@ -37,6 +41,18 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
         {
             var variant = product?.ProductVariant.FirstOrDefault(v => v.ProductTypeId == CurrentTypeId);
             return variant;
+        }
+
+        private async Task AddToCart()
+        {
+            var productVariant = GetSelectedVariant();
+            var cartItem = new CartItem
+            {
+                ProductId = productVariant.ProductId,
+                ProductTypeId = productVariant.ProductTypeId
+            };
+
+            await CartService.AddItemToCart(cartItem);
         }
     }
 }

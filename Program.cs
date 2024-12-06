@@ -1,16 +1,19 @@
+using Blazored.LocalStorage;
 using eCommerceBlazorFrontEnd.Components;
-using eCommerceBlazorFrontEnd.Services;
+using eCommerceBlazorFrontEnd.Services.CartService;
 using eCommerceBlazorFrontEnd.Services.CategoryService;
 using eCommerceBlazorFrontEnd.Services.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiBaseAddress"]) });
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 
