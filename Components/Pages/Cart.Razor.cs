@@ -44,5 +44,17 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
             }
             StateHasChanged(); // Notify Blazor to update the UI
         }
+
+        private async Task UpdateQuantity(ChangeEventArgs e, CartProductResponseDto product)
+        {
+            product.Quantity = int.Parse(e.Value.ToString());
+            if (product.Quantity < 1)
+            {
+                product.Quantity = 1;
+            }
+            await CartService.UpdateQuantity(product);
+            CartProducts = await CartService.GetCartProducts();
+            StateHasChanged(); // Notify Blazor to update the UI
+        }
     }
 }

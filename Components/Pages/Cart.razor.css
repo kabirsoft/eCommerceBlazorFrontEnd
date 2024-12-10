@@ -65,3 +65,7 @@
         text-decoration: underline;
         color: darkred;
     }
+
+.input-quantity {
+    width: 70px;
+}
