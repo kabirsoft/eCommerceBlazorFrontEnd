@@ -1,4 +1,5 @@
 ﻿using eCommerceBlazorFrontEnd.Components.SharedPages.Cart;
+using eCommerceBlazorFrontEnd.Dto;
 
 namespace eCommerceBlazorFrontEnd.Services.CartService
 {
@@ -7,5 +8,6 @@ namespace eCommerceBlazorFrontEnd.Services.CartService
         event Action OnChange;
         Task AddItemToCart(CartItem cartItem);
         Task<List<CartItem>> GetCartItems();
+        Task<List<CartProductResponseDto>> GetCartProducts();
     }
 }

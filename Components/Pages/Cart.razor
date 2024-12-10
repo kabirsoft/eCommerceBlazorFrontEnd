@@ -1,0 +1,36 @@
+﻿@page "/cart"
+@rendermode InteractiveServer
+
+<PageTitle>Shopping Cart</PageTitle>
+<h3>Shopping Cart</h3>
+
+@if (CartProducts == null || CartProducts.Count == 0)
+{
+    <p>@message</p>
+}
+else
+{
+    <div class="cart-container">
+        @foreach (var product in CartProducts)
+        {
+            <div class="product-container">
+                <div class="image-wrapper">
+                    <img src="@product.ImageUrl" class="image" />
+                </div>
+                <div class="name">
+                    <h5> <a href="/product/@product.ProductId"> @product.Title </a> </h5>
+                    <span> @product.ProductType </span>
+                </div>
+                <div class="cart-product-price"> $@product.Price </div>
+            </div>
+        }
+        <div class="total-container">
+            <span class="total-label">Total (@CartProducts.Count):</span>
+            <span class="total-price">$@CartProducts.Sum(product => product.Price)</span>
+        </div>
+    </div>
+}
+
+@code {
+
+}

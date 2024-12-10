@@ -1,0 +1,53 @@
+﻿.cart-container {
+    /*width: 80%;*/ /* put the cart middle of the page */
+    margin: 0 auto;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.product-container {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.image-wrapper {
+    width: 100px;
+    text-align: center;
+    padding-right: 10px;
+}
+
+.image {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.name {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.cart-product-price {
+    font-weight: 600;
+    text-align: right;
+    width: 100px;
+}
+
+.total-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid #000;
+}
+
+.total-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.total-price {
+    font-weight: bold;
+    color: #333;
+}
