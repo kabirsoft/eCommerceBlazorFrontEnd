@@ -26,9 +26,23 @@ namespace eCommerceBlazorFrontEnd.Components.Pages
                 {
                     CartProducts = await CartService.GetCartProducts();
                 }
-
                 StateHasChanged(); // Notify Blazor to update the UI
             }
+        }
+
+        private async Task RemoveItemFromCart(int productId, int productTypeId)
+        {
+            await CartService.RemoveItemFromCart(productId, productTypeId);
+            if ((await CartService.GetCartItems()).Count == 0)
+            {
+                message = "No products in cart";
+                CartProducts = new List<CartProductResponseDto>();
+            }
+            else
+            {
+                CartProducts = await CartService.GetCartProducts();
+            }
+            StateHasChanged(); // Notify Blazor to update the UI
         }
     }
 }

@@ -38,7 +38,7 @@ namespace eCommerceBlazorFrontEnd.Services.CartService
             {
                 cart = new List<CartItem>();
             }
-            
+
             return cart;
         }
 
@@ -47,8 +47,22 @@ namespace eCommerceBlazorFrontEnd.Services.CartService
             var cartItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
             var response = await _http.PostAsJsonAsync("api/cart/products", cartItems);
             var cartProducts = await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponseDto>>>();
-            
+
             return cartProducts.Data;
+        }
+
+        public async Task RemoveItemFromCart(int productId, int productTypeId)
+        {
+            var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+            if (cart == null) return;
+
+            var cartItem = cart.Find(x => x.ProductId == productId && x.ProductTypeId == productTypeId);
+            if (cartItem != null)
+            {
+                cart.Remove(cartItem);
+                await _localStorage.SetItemAsync("cart", cart);
+                OnChange?.Invoke();
+            }
         }
     }
 }

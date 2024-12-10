@@ -9,5 +9,6 @@ namespace eCommerceBlazorFrontEnd.Services.CartService
         Task AddItemToCart(CartItem cartItem);
         Task<List<CartItem>> GetCartItems();
         Task<List<CartProductResponseDto>> GetCartProducts();
+        Task RemoveItemFromCart(int productId, int productTypeId);
     }
 }
