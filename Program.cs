@@ -1,5 +1,6 @@
 using Blazored.LocalStorage;
 using eCommerceBlazorFrontEnd.Components;
+using eCommerceBlazorFrontEnd.Services.AuthService;
 using eCommerceBlazorFrontEnd.Services.CartService;
 using eCommerceBlazorFrontEnd.Services.CategoryService;
 using eCommerceBlazorFrontEnd.Services.ProductService;
@@ -14,6 +15,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
