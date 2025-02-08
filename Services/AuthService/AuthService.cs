@@ -16,5 +16,12 @@ namespace eCommerceBlazorFrontEnd.Services.AuthService
             var result = await _http.PostAsJsonAsync("api/auth/AddUser", newUser);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
         }
+
+        public async Task<ServiceResponse<string>> Login(UserLogin user)
+        {
+            var result = await _http.PostAsJsonAsync("api/auth/Login", user);
+            return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
+
+        }
     }
 }

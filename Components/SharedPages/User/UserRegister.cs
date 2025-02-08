@@ -6,7 +6,7 @@ namespace eCommerceBlazorFrontEnd.Components.SharedPages.User
     {
         [Required, EmailAddress]
         public string Email { get; set; }
-        [Required, StringLength(100, MinimumLength = 6)]
+        [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }
         [Compare("Password", ErrorMessage = "The passwords do not match.")]
         public string ConfirmPassword { get; set; }

@@ -6,5 +6,6 @@ namespace eCommerceBlazorFrontEnd.Services.AuthService
     public interface IAuthService
     {
         Task<ServiceResponse<int>> AddUser(UserRegister newUser);
+        Task<ServiceResponse<string>> Login(UserLogin user);
     }
 }
